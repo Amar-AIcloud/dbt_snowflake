@@ -1,0 +1,4 @@
+use dbt docs generate
+dbt docs serve --port 8001
+Link: https://docs.getdbt.com/reference/commands/cmd-docs#dbt-docs-generate
+

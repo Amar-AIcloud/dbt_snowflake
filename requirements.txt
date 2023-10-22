@@ -1,0 +1,11 @@
+# use pipe install -r requirements.txt
+dbt-core # If you're building a tool that integrates with dbt Core, you may want to install the core library alone, without a database adapter(bigquery,postgres etc..). Note that you won't be able to use dbt as a CLI tool.
+
+# install the packages according to the data warehouse being used in the project
+# the following will install dbt core also
+dbt-postgres
+dbt-snowflake
+dbt-bigquery # GCP
+dbt-synapse # Azure
+dbt-redshift # AWS datawarehouse
+dbt-databricks

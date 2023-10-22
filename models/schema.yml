@@ -1,0 +1,22 @@
+version: 2
+# the following are the 4 default tests that can be given to any of the models.
+models:
+  - name: <table_name>
+    columns:
+      - name: column1
+        tests:
+          - unique
+          - not_null
+      - name: column2
+        tests:
+          - accepted_values:
+              values: ['placed', 'shipped', 'completed', 'returned']
+      - name: column3
+        tests:
+          - relationships:
+              to: ref('customers')
+              field: id
+      - name: amount_usd
+        tests:
+          - not_null
+          - greater_than_zero # generic test
