@@ -1,3 +1,5 @@
 .idea
 requirements.txt
 .user.yml
+target
+logs
