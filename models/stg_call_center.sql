@@ -1,4 +1,4 @@
--- replace the column names and table_name
+{{ config(materialized='table') }}
 
 select
     CC_CALL_CENTER_SK, CC_CALL_CENTER_ID, CC_REC_START_DATE,
