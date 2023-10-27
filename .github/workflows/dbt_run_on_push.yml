@@ -7,7 +7,6 @@ jobs:
     name: dbt_run_on_push
     runs-on: ubuntu-latest
     env:
-      Snowflake PROD: ./
       DBT_SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
       DBT_SNOWFLAKE_USERNAME: ${{ secrets.SNOWFLAKE_USER }}
       DBT_SNOWFLAKE_PW: ${{ secrets.SNOWFLAKE_PASSWORD }}
