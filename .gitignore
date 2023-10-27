@@ -1,0 +1,6 @@
+.idea/
+requirements.txt
+.user.yml
+target/
+logs/
+~$DBT training.pptx

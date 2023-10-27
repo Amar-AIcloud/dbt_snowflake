@@ -1,0 +1,4 @@
+The dbt seed command will load csv files located in the seed-paths
+ directory of your dbt project into your data warehouse.
+dbt seed --select new_sample.csv is the command to execute
+Link: https://docs.getdbt.com/reference/commands/seed
