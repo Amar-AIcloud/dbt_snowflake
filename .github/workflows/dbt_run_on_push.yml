@@ -32,5 +32,8 @@ jobs:
           pip install dbt-snowflake==1.6.0
     
         # dbt related commands here - run use --target prod/dev to run for specific environments
+      - name: See if connection to snowflake is established
+        run: dbt debug
+
       - name: Run dbt models
         run: dbt run
