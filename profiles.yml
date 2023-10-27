@@ -3,17 +3,29 @@ snowflake:
   outputs:
     dev:
       type: snowflake
-      account: ${{ secrets.SNOWFLAKE_ACCOUNT }} # Snowflake <account_name>
-      user: ${{ secrets.SNOWFLAKE_USER }} # Snowflake username
-      password: ${{ secrets.SNOWFLAKE_PASSWORD }}
-      role: ${{ secrets.SNOWFLAKE_ROLE }} # Snowflake user role
+      account: "{{ env_var('DBT_SNOWFLAKE_USERNAME') }}" # Snowflake <account_name>
+      user: "{{ env_var('DBT_SNOWFLAKE_USERNAME') }}" # Snowflake username
+      password: "{{ env_var('DBT_SNOWFLAKE_PW') }}"
+      role: "{{ env_var('DBT_SNOWFLAKE_ROLE') }}" # Snowflake user role
 
       # SSO config
       # authenticator: externalbrowser
 
       database: DBT_PROJECT # Snowflake database name
       warehouse: COMPUTE_WH # Snowflake warehouse name
-      schema: ${{ secrets.SNOWFLAKE_SCHEMA }}
+      schema: DEV
+      threads: 4
+      client_session_keep_alive: False
+
+    prod:
+      type: snowflake
+      account: "{{ env_var('DBT_SNOWFLAKE_USERNAME') }}" # Snowflake <account_name>
+      user: "{{ env_var('DBT_SNOWFLAKE_USERNAME') }}" # Snowflake username
+      password: "{{ env_var('DBT_SNOWFLAKE_PW') }}"
+      role: "{{ env_var('DBT_SNOWFLAKE_ROLE') }}" # Snowflake user role
+      database: DBT_PROJECT # Snowflake database name
+      warehouse: COMPUTE_WH # Snowflake warehouse name
+      schema: PROD
       threads: 4
       client_session_keep_alive: False
 

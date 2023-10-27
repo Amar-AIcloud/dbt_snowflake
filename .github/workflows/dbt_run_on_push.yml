@@ -1,0 +1,36 @@
+name: dbt_run_on_push
+
+on:
+push:
+    branches:
+    # run on push to development branch
+    - development
+env:
+DBT_PROFILES_DIR: ./
+
+DBT_SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+DBT_SNOWFLAKE_USERNAME: ${{ secrets.SNOWFLAKE_USER }}
+DBT_SNOWFLAKE_PW: ${{ secrets.SNOWFLAKE_PASSWORD }}
+DBT_SNOWFLAKE_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
+
+jobs:
+dbt_run_on_push:
+    name: dbt_run_on_push
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out
+        uses: actions/checkout@master
+
+    - uses: actions/setup-python@v1
+        with:
+        python-version: "3.11.x"
+
+    - name: Install dependencies
+        run: |
+        pip install dbt
+        dbt deps
+
+    # dbt related commands here - run use --target prod/dev to run for specific environments
+    - name: Run dbt models
+        run: dbt run
