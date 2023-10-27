@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 
 env:
- Snowflake PROD:
+ Snowflake PROD: ./
 
  DBT_SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
  DBT_SNOWFLAKE_USERNAME: ${{ secrets.SNOWFLAKE_USER }}
