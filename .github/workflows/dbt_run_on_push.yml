@@ -26,15 +26,15 @@ dbt_run_on_push:
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
 
-        uses: actions/setup-python@v1
-          with:
-          python-version: "3.11.x"
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
     
       - name: Install dependencies
-          run: |
+        run: |
           pip install dbt
           dbt deps
     
         # dbt related commands here - run use --target prod/dev to run for specific environments
       - name: Run dbt models
-          run: dbt run
+        run: dbt run
