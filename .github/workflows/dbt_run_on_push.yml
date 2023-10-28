@@ -2,18 +2,15 @@ name: dbt_run_on_push
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 
-env:
- Snowflake PROD: ./
-
- DBT_SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
- DBT_SNOWFLAKE_USERNAME: ${{ secrets.SNOWFLAKE_USER }}
- DBT_SNOWFLAKE_PW: ${{ secrets.SNOWFLAKE_PASSWORD }}
- DBT_SNOWFLAKE_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
-
 jobs:
  dbt_run_on_push:
     name: dbt_run_on_push
     runs-on: ubuntu-latest
+    env:
+      DBT_SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+      DBT_SNOWFLAKE_USERNAME: ${{ secrets.SNOWFLAKE_USER }}
+      DBT_SNOWFLAKE_PW: ${{ secrets.SNOWFLAKE_PASSWORD }}
+      DBT_SNOWFLAKE_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -33,7 +30,12 @@ jobs:
       - name: Install dependencies
         run: |
           pip install dbt-snowflake==1.6.0
-    
+      - run: echo "🎉 Check if secrets are getting loaded to the actions workflow."
+      - if: ${{ env.DBT_SNOWFLAKE_ACCOUNT != '' }}
+        run: echo 'This step will only run if the secret has a value set. - Account has value'
+      - if: ${{ env.DBT_SNOWFLAKE_ACCOUNT == '' }}
+        run: echo 'This step will only run if the secret does not have a value set - No value in Account.'
+
         # dbt related commands here - run use --target prod/dev to run for specific environments
       - name: See if connection to snowflake is established
         run: dbt debug
