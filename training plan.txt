@@ -1,0 +1,49 @@
+Training Plan for DBT
+
+Day 1: Introduction to DBT
+•	Overview of DBT and its role in data pipelines
+•	Introduction to DBT core and DBT cloud
+•	Creating basic DBT folder structure
+•	Introduction to DBT models and their purpose
+•	Creating simple DBT models and use of ‘ref’ function in dbt – set up account and build model
+•	‘dbt_profiles.yml’ and how to run models
+.    Creating Custom Schema's and their uses
+Day 2:  Schema’s and the DBT Schema tests
+•	Writing tests for DBT models using ‘schema’.
+•	Use of description of columns and best practices in writing model schema.
+•	Use of dbt utils package to include more tests.
+.   Singular and Generic tests
+•	DBT singular tests and how dbt uses reverse logic for test pass
+•	DBT generic tests and how to call them from Schema
+•	DBT test. How to run specific folder tests or model tests
+.   DBT documentation and linage graph
+•	Generating documentation using ‘dbt docs’ command
+•	How lineage graph works.
+•	Details on what we can check in documentation created by dbt
+Week 2
+Day 6: DBT Macros, Use of Jinja templates
+•	Using DBT models for common transformations
+•	How Jinja works and how to use in dbt models
+Day 7: Materializations and incremental models
+•	How to add config in the sql model code
+•	How to build materialised views and tables
+•	Incremental models and its uses
+Day 8: DBT seeds and deployment
+•	How dbt seed works and what are its uses.
+•	Deployment
+Day 9: DBT snapshots and analysis
+•	How snapshots work in dbt
+•	DBT analysis.
+•	Pre-hook, post-hook
+Day 10: DBT best practices use of SQL linters
+•	SQL linters and how it helps in fixing DBT sql code
+•	DBT folder structures and best practice.
+
+ Week 3: Assessment.
+(Project)
+Week 3: Individual Assessment.
+	Create stg_models, macros, models.
+	Show and tell with each individual
+	Rating on SQL, Best practices followed, documentation.
+
+

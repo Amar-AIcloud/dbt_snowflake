@@ -41,4 +41,7 @@ jobs:
         run: dbt debug
 
       - name: Run dbt models
-        run: dbt run --target prod
+        run: dbt run --target dev
+
+      - name: test dbt models
+        run: dbt test
