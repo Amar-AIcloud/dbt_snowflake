@@ -44,3 +44,5 @@ jobs:
       - name: Run dbt models
         run: dbt run --target prod
 
+      - name: Seed dbt model
+        run: dbt seed --target prod
