@@ -89,6 +89,9 @@ models:
       - name: wp_web_page_sk
         data_type: number
         description: ""
+        tests:
+          - unique
+          - not_null
 
       - name: wp_web_page_id
         data_type: varchar
@@ -113,7 +116,9 @@ models:
       - name: wp_autogen_flag
         data_type: varchar
         description: ""
-
+        tests:
+          - accepted_values:
+              values: ['Y', 'N']
       - name: wp_customer_sk
         data_type: number
         description: ""
@@ -148,6 +153,9 @@ models:
       - name: wp_web_page_sk
         data_type: number
         description: ""
+        tests:
+          - unique
+          - not_null
 
       - name: wp_web_page_id
         data_type: varchar
