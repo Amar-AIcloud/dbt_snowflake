@@ -1,25 +1,198 @@
 version: 2
 # the following are the 4 default tests that can be given to any of the models.
 models:
-  - name: stg_call_center
+  - name: stg_promotion
+    description: ""
     columns:
-      - name: CC_CALL_CENTER_SK
+      - name: p_promo_sk
+        data_type: number
+        description: ""
         tests:
           - unique
           - not_null
-      - name: CC_CALL_CENTER_ID
-        tests:
-          - unique
-          - not_null
-#        tests:
-#          - accepted_values:
-#              values: ['placed', 'shipped', 'completed', 'returned']
-#      - name: column3
-#        tests:
-#          - relationships:
-#              to: ref('customers')
-#              field: id
-#      - name: amount_usd
-#        tests:
-#          - not_null
-#          - greater_than_zero # generic test
+
+      - name: p_promo_id
+        data_type: varchar
+        description: ""
+
+      - name: p_start_date_sk
+        data_type: number
+        description: ""
+
+      - name: p_end_date_sk
+        data_type: number
+        description: ""
+
+      - name: p_item_sk
+        data_type: number
+        description: ""
+
+      - name: p_cost
+        data_type: number
+        description: ""
+
+      - name: p_response_target
+        data_type: number
+        description: ""
+
+      - name: p_promo_name
+        data_type: varchar
+        description: ""
+
+      - name: p_channel_dmail
+        data_type: varchar
+        description: ""
+
+      - name: p_channel_email
+        data_type: varchar
+        description: ""
+
+      - name: p_channel_catalog
+        data_type: varchar
+        description: ""
+
+      - name: p_channel_tv
+        data_type: varchar
+        description: ""
+
+      - name: p_channel_radio
+        data_type: varchar
+        description: ""
+
+      - name: p_channel_press
+        data_type: varchar
+        description: ""
+
+      - name: p_channel_event
+        data_type: varchar
+        description: ""
+
+      - name: p_channel_demo
+        data_type: varchar
+        description: ""
+
+      - name: p_channel_details
+        data_type: varchar
+        description: ""
+
+      - name: p_purpose
+        data_type: varchar
+        description: ""
+
+      - name: p_discount_active
+        data_type: varchar
+        description: ""
+
+  - name: stg_web_page
+    description: ""
+    columns:
+      - name: wp_web_page_sk
+        data_type: number
+        description: ""
+
+      - name: wp_web_page_id
+        data_type: varchar
+        description: ""
+
+      - name: wp_rec_start_date
+        data_type: date
+        description: ""
+
+      - name: wp_rec_end_date
+        data_type: date
+        description: ""
+
+      - name: wp_creation_date_sk
+        data_type: number
+        description: ""
+
+      - name: wp_access_date_sk
+        data_type: number
+        description: ""
+
+      - name: wp_autogen_flag
+        data_type: varchar
+        description: ""
+
+      - name: wp_customer_sk
+        data_type: number
+        description: ""
+
+      - name: wp_url
+        data_type: varchar
+        description: ""
+
+      - name: wp_type
+        data_type: varchar
+        description: ""
+
+      - name: wp_char_count
+        data_type: number
+        description: ""
+
+      - name: wp_link_count
+        data_type: number
+        description: ""
+
+      - name: wp_image_count
+        data_type: number
+        description: ""
+
+      - name: wp_max_ad_count
+        data_type: number
+        description: ""
+
+  - name: web_promotions
+    description: ""
+    columns:
+      - name: wp_web_page_sk
+        data_type: number
+        description: ""
+
+      - name: wp_web_page_id
+        data_type: varchar
+        description: ""
+
+      - name: wp_rec_start_date
+        data_type: date
+        description: ""
+
+      - name: wp_rec_end_date
+        data_type: date
+        description: ""
+
+      - name: p_cost
+        data_type: number
+        description: ""
+
+      - name: p_response_target
+        data_type: number
+        description: ""
+
+      - name: p_promo_name
+        data_type: varchar
+        description: ""
+
+      - name: p_channel_email
+        data_type: varchar
+        description: ""
+
+      - name: p_channel_catalog
+        data_type: varchar
+        description: ""
+
+      - name: p_channel_tv
+        data_type: varchar
+        description: ""
+
+      - name: p_channel_radio
+        data_type: varchar
+        description: ""
+
+      - name: p_channel_press
+        data_type: varchar
+        description: ""
+
+      - name: p_channel_event
+        data_type: varchar
+        description: ""

@@ -1,4 +1,4 @@
-{{ config(materialized='table') }}
+{{ config(materialized='table', schema = 'staging') }}
 
 select
     CC_CALL_CENTER_SK,

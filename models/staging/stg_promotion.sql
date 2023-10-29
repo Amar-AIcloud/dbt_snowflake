@@ -1,4 +1,4 @@
-{{ config(materialized='table') }}
+{{ config(materialized='table', schema = 'staging') }}
 
 Select
     P_PROMO_SK,

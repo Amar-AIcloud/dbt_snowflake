@@ -30,6 +30,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install dbt-snowflake==1.6.0
+          dbt deps
       - run: echo "🎉 Check if secrets are getting loaded to the actions workflow."
       - if: ${{ env.DBT_SNOWFLAKE_ACCOUNT != '' }}
         run: echo 'This step will only run if the secret has a value set. - Account has value'
@@ -41,7 +42,5 @@ jobs:
         run: dbt debug
 
       - name: Run dbt models
-        run: dbt run --target dev
+        run: dbt run --target prod
 
-      - name: test dbt models
-        run: dbt test

@@ -1,4 +1,4 @@
-{{ config(materialized='table') }}
+{{ config(materialized='table', schema = 'staging') }}
 
 SELECT
     WP_WEB_PAGE_SK,
