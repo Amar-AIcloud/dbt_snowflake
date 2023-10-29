@@ -4,3 +4,5 @@ requirements.txt
 target/
 logs/
 ~$DBT training.pptx
+dbt_packages/
+dbt_packages/dbt_unit_testing/

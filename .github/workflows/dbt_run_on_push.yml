@@ -1,22 +1,16 @@
 name: dbt_run_on_push
-
-on:
-push:
-    branches:
-    # run on push to development branch
-    - development
-env:
-DBT_PROFILES_DIR: ./
-
-DBT_SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
-DBT_SNOWFLAKE_USERNAME: ${{ secrets.SNOWFLAKE_USER }}
-DBT_SNOWFLAKE_PW: ${{ secrets.SNOWFLAKE_PASSWORD }}
-DBT_SNOWFLAKE_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
 
 jobs:
-dbt_run_on_push:
+ dbt_run_on_push:
     name: dbt_run_on_push
     runs-on: ubuntu-latest
+    env:
+      DBT_SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+      DBT_SNOWFLAKE_USERNAME: ${{ secrets.SNOWFLAKE_USER }}
+      DBT_SNOWFLAKE_PW: ${{ secrets.SNOWFLAKE_PASSWORD }}
+      DBT_SNOWFLAKE_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -25,16 +19,28 @@ dbt_run_on_push:
         uses: actions/checkout@v4
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
 
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.10' 
+          python-version: '3.11'
     
       - name: Install dependencies
         run: |
-          pip install dbt
+          pip install dbt-snowflake==1.6.0
           dbt deps
-    
+      - run: echo "🎉 Check if secrets are getting loaded to the actions workflow."
+      - if: ${{ env.DBT_SNOWFLAKE_ACCOUNT != '' }}
+        run: echo 'This step will only run if the secret has a value set. - Account has value'
+      - if: ${{ env.DBT_SNOWFLAKE_ACCOUNT == '' }}
+        run: echo 'This step will only run if the secret does not have a value set - No value in Account.'
+
         # dbt related commands here - run use --target prod/dev to run for specific environments
+      - name: See if connection to snowflake is established
+        run: dbt debug
+
       - name: Run dbt models
-        run: dbt run
+        run: dbt run --target prod
+

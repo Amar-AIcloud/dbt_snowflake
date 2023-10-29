@@ -6,3 +6,4 @@ sources:
     tables:
       - name: CALL_CENTER
       - name: WEB_PAGE
+      - name: PROMOTION

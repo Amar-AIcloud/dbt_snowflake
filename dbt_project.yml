@@ -32,3 +32,8 @@ models:
     # Applies to all files under models/example/
     example:
       materialized: view
+
+vars:
+  unit_tests_config:
+    input_format: "csv"
+    column_separator: "|"
