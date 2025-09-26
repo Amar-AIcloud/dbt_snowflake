@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: TPCDS_SF100TCL
+    database: SNOWFLAKE_SAMPLE_DATA
+    tables:
+      - name: CALL_CENTER
+      - name: WEB_PAGE
+      - name: PROMOTION

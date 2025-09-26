@@ -1,0 +1,3 @@
+Any .sql files found in the analyses/ directory of a dbt project will be compiled, but not executed.
+
+Link: https://docs.getdbt.com/docs/build/analyses
